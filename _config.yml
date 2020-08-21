@@ -24,6 +24,7 @@ author:
   twitter:
   picture: "/assets/images/starsakura.jpg"
 twitter_username:
+facebook_username: catcat1027
 github_username: catcatcatcat
 logo: # path of site logo, e.g. "/assets/images/logo.png"
 search: true # true, false (default)
@@ -82,4 +83,4 @@ defaults:
       type: posts
     values:
       layout: post
-      read_time: true
+      read_time: false
