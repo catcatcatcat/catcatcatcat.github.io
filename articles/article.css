@@ -1,0 +1,128 @@
+/* Article Styles */
+.article-content {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem 20px;
+}
+
+.article-header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.article-tags {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.article-tags span {
+    color: var(--color-pink);
+    font-size: 0.8rem;
+    font-weight: 500;
+    letter-spacing: 1px;
+}
+
+.article-header h1 {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 2.5rem;
+    color: var(--color-mint);
+    margin: 1rem 0;
+    line-height: 1.2;
+    text-shadow: 0 0 20px rgba(134, 206, 203, 0.3);
+}
+
+.article-meta {
+    color: var(--color-gray);
+    font-size: 0.9rem;
+    margin-top: 1rem;
+}
+
+.article-meta span {
+    margin: 0 0.5rem;
+}
+
+.article-image {
+    height: 400px;
+    background-size: cover;
+    background-position: center;
+    border-radius: 12px;
+    margin: 2rem 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.article-image::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(180deg, rgba(55, 59, 62, 0) 0%, rgba(55, 59, 62, 0.4) 100%);
+}
+
+.article-body {
+    color: var(--color-gray);
+    line-height: 1.8;
+}
+
+.article-body h2 {
+    font-family: 'Orbitron', sans-serif;
+    color: var(--color-mint);
+    font-size: 1.8rem;
+    margin: 2rem 0 1rem;
+    text-shadow: 0 0 10px rgba(134, 206, 203, 0.2);
+}
+
+.article-body p {
+    margin-bottom: 1.5rem;
+}
+
+.bottom-tags {
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--color-teal);
+}
+
+.bottom-tags a {
+    color: var(--color-pink);
+    text-decoration: none;
+    font-size: 0.9rem;
+    letter-spacing: 2px;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    padding: 0.5rem 1rem;
+    border: 1px solid var(--color-pink);
+    border-radius: 4px;
+    background: transparent;
+}
+
+.bottom-tags a:hover {
+    background: var(--color-pink);
+    color: var(--color-dark);
+    box-shadow: 0 0 15px rgba(225, 40, 133, 0.4);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .article-header h1 {
+        font-size: 2rem;
+    }
+
+    .article-image {
+        height: 300px;
+    }
+}
+
+@media (max-width: 480px) {
+    .article-header h1 {
+        font-size: 1.8rem;
+    }
+
+    .article-body h2 {
+        font-size: 1.5rem;
+    }
+}
