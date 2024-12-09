@@ -144,6 +144,23 @@ body {
     display: flex;
     flex-direction: column;
     height: 100%;
+    cursor: pointer;
+}
+
+.recipe-card a.card-link {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    text-decoration: none;
+}
+
+.recipe-card .recipe-tags span,
+.recipe-card .read-more {
+    position: relative;
+    z-index: 2;
 }
 
 .recipe-card:hover {
@@ -227,6 +244,62 @@ body {
     letter-spacing: 1px;
     font-size: 0.9rem;
     margin-top: auto;
+}
+
+/* Article Navigation */
+.article-navigation {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2rem;
+    margin: 4rem 0;
+    border-top: 1px solid var(--color-teal);
+}
+
+.nav-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    border: 1px solid var(--color-pink);
+    border-radius: 4px;
+    color: var(--color-pink);
+    text-decoration: none;
+    font-size: 0.9rem;
+    letter-spacing: 2px;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    background: transparent;
+    min-width: 150px;
+    text-align: center;
+}
+
+.nav-button:hover {
+    background: var(--color-pink);
+    color: var(--color-dark);
+    box-shadow: 0 0 15px rgba(225, 40, 133, 0.4);
+}
+
+.nav-button.previous::before {
+    content: '←';
+    font-size: 1.2rem;
+}
+
+.nav-button.next::after {
+    content: '→';
+    font-size: 1.2rem;
+}
+
+.nav-button.home {
+    border-color: var(--color-mint);
+    color: var(--color-mint);
+}
+
+.nav-button.home:hover {
+    background: var(--color-mint);
+    color: var(--color-dark);
+    box-shadow: 0 0 15px rgba(134, 206, 203, 0.4);
 }
 
 /* Footer */
