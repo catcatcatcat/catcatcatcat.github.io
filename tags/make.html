@@ -31,16 +31,7 @@
     </section>
 
     <div class="recipes-grid">
-        {% for post in site.posts %}
-            {% if post.tags contains 'make' %}
-                <article>
-                    <h3>{{ post.title }}</h3>
-                    <p>{{ post.date | date: "%B %d, %Y" }}</p>
-                    <p>{{ post.excerpt }}</p>
-                    <a href="{{ post.url }}">Read more</a>
-                </article>
-            {% endif %}
-        {% endfor %}
+        <!-- Articles with make tag will be listed here -->
     </div>
 
     <footer>

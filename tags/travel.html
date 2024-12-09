@@ -31,16 +31,7 @@
     </section>
 
     <div class="recipes-grid">
-        {% for post in site.posts %}
-            {% if post.tags contains 'travel' %}
-                <article class="recipe">
-                    <h3 class="recipe-title">{{ post.title }}</h3>
-                    <p class="recipe-date">{{ post.date | date: "%B %d, %Y" }}</p>
-                    <p class="recipe-excerpt">{{ post.excerpt }}</p>
-                    <a href="{{ post.url }}" class="recipe-link">Read More</a>
-                </article>
-            {% endif %}
-        {% endfor %}
+        <!-- Articles with travel tag will be listed here -->
     </div>
 
     <footer>
