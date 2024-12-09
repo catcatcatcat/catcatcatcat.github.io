@@ -1,47 +1,40 @@
-# Minimal Blog Template
+# Pixels and Pages
 
-A clean, minimalist blog template designed for GitHub Pages. Features include a responsive navigation bar, tag-based article categorization, and a modern, minimal design.
+A minimal, clean static blog hosted on GitHub Pages. Writing about cat, life, and everything in between.
 
-## Features
+## Structure
 
-- Clean, minimal design
-- Responsive navigation bar
-- Tag-based article filtering
-- Mobile-friendly layout
-- No external dependencies
-
-## Usage
-
-1. Fork this repository
-2. Rename it to `yourusername.github.io`
-3. Edit `index.html` to add your own blog posts
-4. Customize the design in `styles.css`
-5. Your blog will be available at `https://yourusername.github.io`
-
-### Adding Blog Posts
-
-To add a new blog post, copy the article template in `index.html` and modify it:
-
-```html
-<article class="post" data-tags="your,tags,here">
-    <h2>Your Post Title</h2>
-    <div class="post-meta">
-        <span class="date">Your Date</span>
-        <span class="tags">
-            <span class="tag">your-tag</span>
-        </span>
-    </div>
-    <p class="excerpt">Your post excerpt here.</p>
-    <a href="#" class="read-more">Read More</a>
-</article>
+```
+minimal-blog/
+├── index.html          # Main landing page
+├── styles.css          # Global styles
+├── script.js           # Global JavaScript
+├── articles/           # Blog posts
+├── images/            # Image assets
+└── tags/              # Tag category pages
 ```
 
-## Customization
+## Development
 
-- Change colors in `styles.css`
-- Modify the navigation links in `index.html`
-- Add new features to `script.js`
+This is a static website built with vanilla HTML, CSS, and JavaScript. No build process required.
 
-## License
+### Features
+- Responsive design
+- Tag-based navigation
+- Clean, minimal interface
+- Optimized for GitHub Pages
 
-MIT License - feel free to use this template for your personal blog!
+### Adding New Content
+
+1. Create a new article in the `articles/` directory
+2. Add images to the `images/` directory
+3. Update relevant tag pages in `tags/`
+4. Link the new article in `index.html` if featuring on homepage
+
+## Color Scheme
+
+- Dark: #373B3E
+- Gray: #BEC8D1
+- Mint: #86CECB
+- Teal: #137A7F
+- Pink: #E12885

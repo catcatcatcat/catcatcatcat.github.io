@@ -302,6 +302,20 @@ body {
     box-shadow: 0 0 15px rgba(134, 206, 203, 0.4);
 }
 
+/* Empty State */
+.empty-state {
+    text-align: center;
+    padding: 40px;
+    color: var(--color-mint);
+    font-family: 'Chakra Petch', sans-serif;
+    font-size: 1.2em;
+}
+
+.empty-state p {
+    margin: 0;
+    opacity: 0.8;
+}
+
 /* Footer */
 footer {
     text-align: center;

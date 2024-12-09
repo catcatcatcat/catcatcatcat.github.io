@@ -1,0 +1,11 @@
+.DS_Store
+*.log
+.vscode/
+.idea/
+node_modules/
+_site/
+.sass-cache/
+.jekyll-cache/
+.jekyll-metadata
+*.swp
+*~
