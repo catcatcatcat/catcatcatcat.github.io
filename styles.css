@@ -89,27 +89,37 @@ body {
     padding-bottom: 2rem;
 }
 
-.category-tags {
+.tag-container {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
     gap: 2rem;
+    justify-content: center;
+    margin: 2rem 0;
 }
 
-.category-tags a {
+.tag {
+    display: inline-block;
+    padding: 0.5rem 1.5rem;
+    border: 1px solid var(--color-pink);
+    border-radius: 4px;
     color: var(--color-pink);
     text-decoration: none;
     font-size: 0.9rem;
     letter-spacing: 2px;
     transition: all 0.3s ease;
     text-transform: uppercase;
-    padding: 0.5rem 1rem;
-    border: 1px solid var(--color-pink);
-    border-radius: 4px;
     background: transparent;
+    min-width: 120px;
+    text-align: center;
 }
 
-.category-tags a:hover {
+.tag:hover {
+    background: var(--color-pink);
+    color: var(--color-dark);
+    box-shadow: 0 0 15px rgba(225, 40, 133, 0.4);
+}
+
+.tag.active {
     background: var(--color-pink);
     color: var(--color-dark);
     box-shadow: 0 0 15px rgba(225, 40, 133, 0.4);
@@ -235,7 +245,7 @@ footer {
         padding: 0 1rem;
     }
 
-    .category-tags {
+    .tag-container {
         gap: 1rem;
     }
 
