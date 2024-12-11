@@ -191,4 +191,40 @@ document.addEventListener('DOMContentLoaded', function() {
         listItem.appendChild(link);
         popularList.appendChild(listItem);
     });
+
+    // Menu functionality
+    const menuPanel = document.querySelector('.menu-panel');
+    const body = document.body;
+
+    // Create overlay if it doesn't exist
+    let overlay = document.querySelector('.menu-overlay');
+    if (!overlay) {
+        overlay = document.createElement('div');
+        overlay.className = 'menu-overlay';
+        body.appendChild(overlay);
+    }
+
+    // Toggle menu
+    menuToggle.addEventListener('click', function() {
+        console.log('Menu toggle clicked'); // Debug log
+        menuPanel.classList.toggle('active');
+        overlay.classList.toggle('active');
+        body.style.overflow = menuPanel.classList.contains('active') ? 'hidden' : '';
+    });
+
+    // Close menu when clicking overlay
+    overlay.addEventListener('click', function() {
+        menuPanel.classList.remove('active');
+        overlay.classList.remove('active');
+        body.style.overflow = '';
+    });
+
+    // Close menu when pressing Escape key
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && menuPanel.classList.contains('active')) {
+            menuPanel.classList.remove('active');
+            overlay.classList.remove('active');
+            body.style.overflow = '';
+        }
+    });
 });

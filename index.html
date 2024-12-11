@@ -9,10 +9,32 @@
 </head>
 <body>
     <nav class="main-nav">
-        <button class="menu-toggle">☰</button>
-        <a href="/" class="site-title">Pixels and Pages</a>
-        <button class="search-toggle">🔍</button>
+        <button class="menu-toggle" aria-label="Toggle Menu">☰</button>
+        <a href="index.html" class="site-title">Pixels and Pages</a>
+        <button class="search-toggle" aria-label="Toggle Search">🔍</button>
     </nav>
+
+    <div class="menu-panel">
+        <nav class="menu-content">
+            <ul class="menu-list">
+                <li><a href="index.html" class="menu-item">Home</a></li>
+                <li class="menu-category">
+                    <span class="category-title">Categories</span>
+                    <ul class="submenu">
+                        <li><a href="tags/daily.html">Daily</a></li>
+                        <li><a href="tags/travel.html">Travel</a></li>
+                        <li><a href="tags/review.html">Review</a></li>
+                        <li><a href="tags/food.html">Food</a></li>
+                        <li><a href="tags/make.html">Make</a></li>
+                        <li><a href="tags/anime.html">Anime</a></li>
+                        <li><a href="tags/other.html">Other</a></li>
+                    </ul>
+                </li>
+                <li><a href="/about.html" class="menu-item">About</a></li>
+                <li><a href="/archive.html" class="menu-item">Archive</a></li>
+            </ul>
+        </nav>
+    </div>
 
     <div class="hero-section">
         <h2 class="hero-title">Writing about cat, life, and everything in between.</h2>
