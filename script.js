@@ -66,15 +66,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     // Add "All" tag
-    const allTag = document.createElement('span');
-    allTag.classList.add('tag');
-    allTag.textContent = 'all';
-    allTag.addEventListener('click', () => {
-        activeTag = 'all';
-        filterPosts();
-        updateActiveStates();
-    });
-    tagList.insertBefore(allTag, tagList.firstChild);
+   
 
     // Filter posts by tag and date
     function filterPosts() {
@@ -116,28 +108,87 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Search functionality
-    const searchInput = document.getElementById('recipe-search');
-    const searchButton = document.querySelector('.search-button');
-    const recipes = document.querySelectorAll('.recipe-card');
+    // Menu functionality
+    const menuToggle = document.querySelector('.menu-toggle');
+    const menuPanel = document.querySelector('.menu-panel');
+    const menuOverlay = document.querySelector('.menu-overlay');
+    const body = document.body;
 
-    function searchRecipes(query) {
-        const searchTerm = query.toLowerCase();
-        recipes.forEach(recipe => {
-            const title = recipe.querySelector('h2').textContent.toLowerCase();
-            const description = recipe.querySelector('p').textContent.toLowerCase();
-            const tags = recipe.dataset.tags.toLowerCase();
+    if (!menuToggle || !menuPanel) {
+        console.error('Menu elements not found');
+        return;
+    }
 
-            if (title.includes(searchTerm) || description.includes(searchTerm) || tags.includes(searchTerm)) {
-                recipe.style.display = 'block';
-            } else {
-                recipe.style.display = 'none';
-            }
+    // Toggle menu
+    menuToggle.addEventListener('click', (e) => {
+        e.stopPropagation(); // Prevent event from bubbling
+        menuPanel.classList.toggle('active');
+        menuToggle.classList.toggle('active');
+        menuOverlay.classList.toggle('active');
+        body.style.overflow = menuPanel.classList.contains('active') ? 'hidden' : '';
+    });
+
+    // Close menu when clicking overlay
+    if (menuOverlay) {
+        menuOverlay.addEventListener('click', () => {
+            menuPanel.classList.remove('active');
+            menuToggle.classList.remove('active');
+            menuOverlay.classList.remove('active');
+            body.style.overflow = '';
         });
     }
 
-    searchInput.addEventListener('input', (e) => searchRecipes(e.target.value));
-    searchButton.addEventListener('click', () => searchRecipes(searchInput.value));
+    // Close menu when pressing Escape key
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && menuPanel.classList.contains('active')) {
+            menuPanel.classList.remove('active');
+            menuToggle.classList.remove('active');
+            menuOverlay.classList.remove('active');
+            body.style.overflow = '';
+        }
+    });
+
+    // Search functionality
+    const searchInput = document.getElementById('search-input');
+    const searchButton = document.querySelector('.search-button');
+    const searchToggle = document.querySelector('.search-toggle');
+    const searchContainer = document.querySelector('.search-container');
+
+    if (searchInput && searchButton && searchToggle && searchContainer) {
+        // Search toggle
+        searchToggle.addEventListener('click', () => {
+            searchContainer.classList.toggle('search-open');
+            searchInput.focus();
+        });
+
+        // Search functionality
+        const searchPosts = (query) => {
+            const posts = document.querySelectorAll('.post');
+            const searchTerm = query.toLowerCase();
+
+            posts.forEach(post => {
+                const title = post.querySelector('h2').textContent.toLowerCase();
+                const description = post.querySelector('p').textContent.toLowerCase();
+                const tags = post.dataset.tags ? post.dataset.tags.toLowerCase() : '';
+
+                if (title.includes(searchTerm) || description.includes(searchTerm) || tags.includes(searchTerm)) {
+                    post.style.display = 'block';
+                } else {
+                    post.style.display = 'none';
+                }
+            });
+        };
+
+        searchInput.addEventListener('input', (e) => searchPosts(e.target.value));
+        searchButton.addEventListener('click', () => searchPosts(searchInput.value));
+
+        // Close search when pressing Escape
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && searchContainer.classList.contains('search-open')) {
+                searchContainer.classList.remove('search-open');
+            }
+        });
+    }
 
     // Category filtering
     const categoryLinks = document.querySelectorAll('.category-tags a');
@@ -152,6 +203,7 @@ document.addEventListener('DOMContentLoaded', function() {
             link.classList.add('active');
 
             // Filter recipes
+            const recipes = document.querySelectorAll('.recipe-card');
             recipes.forEach(recipe => {
                 const tags = recipe.dataset.tags.toLowerCase();
                 if (category === 'all' || tags.includes(category)) {
@@ -163,23 +215,9 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Mobile menu toggle
-    const menuToggle = document.querySelector('.menu-toggle');
-    const searchToggle = document.querySelector('.search-toggle');
-    const searchContainer = document.querySelector('.search-container');
-
-    menuToggle.addEventListener('click', () => {
-        document.body.classList.toggle('menu-open');
-    });
-
-    searchToggle.addEventListener('click', () => {
-        searchContainer.classList.toggle('search-open');
-        searchInput.focus();
-    });
-
     // Popular recipes
     const popularList = document.querySelector('.popular-list');
-    const popularRecipes = Array.from(recipes).slice(0, 5); // Get first 5 recipes
+    const popularRecipes = Array.from(document.querySelectorAll('.recipe-card')).slice(0, 5); // Get first 5 recipes
 
     popularRecipes.forEach(recipe => {
         const title = recipe.querySelector('h2').textContent;
@@ -190,41 +228,5 @@ document.addEventListener('DOMContentLoaded', function() {
         listItem.classList.add('popular-item');
         listItem.appendChild(link);
         popularList.appendChild(listItem);
-    });
-
-    // Menu functionality
-    const menuPanel = document.querySelector('.menu-panel');
-    const body = document.body;
-
-    // Create overlay if it doesn't exist
-    let overlay = document.querySelector('.menu-overlay');
-    if (!overlay) {
-        overlay = document.createElement('div');
-        overlay.className = 'menu-overlay';
-        body.appendChild(overlay);
-    }
-
-    // Toggle menu
-    menuToggle.addEventListener('click', function() {
-        console.log('Menu toggle clicked'); // Debug log
-        menuPanel.classList.toggle('active');
-        overlay.classList.toggle('active');
-        body.style.overflow = menuPanel.classList.contains('active') ? 'hidden' : '';
-    });
-
-    // Close menu when clicking overlay
-    overlay.addEventListener('click', function() {
-        menuPanel.classList.remove('active');
-        overlay.classList.remove('active');
-        body.style.overflow = '';
-    });
-
-    // Close menu when pressing Escape key
-    document.addEventListener('keydown', function(e) {
-        if (e.key === 'Escape' && menuPanel.classList.contains('active')) {
-            menuPanel.classList.remove('active');
-            overlay.classList.remove('active');
-            body.style.overflow = '';
-        }
     });
 });
